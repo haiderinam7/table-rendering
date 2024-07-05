@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles.css'; 
 import TableRendererComponent from './TableRendererComponent';
 import { tableData } from './data';
 

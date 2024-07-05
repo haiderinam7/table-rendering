@@ -15,35 +15,42 @@ const TableRendererComponent = ({ tableData }) => {
         {tableData.rows.map((row, rowIndex) => (
           <tr key={rowIndex}>
             {tableData.header.map((headerItem, colIndex) => {
-              const cellValue = row[headerItem.label.replace(/ /g, '').toLowerCase()];
+              let cellValue;
+              // Access row data using the exact label from headerItem
               switch (headerItem.type) {
                 case "text":
-                  return <td key={colIndex}>{cellValue}</td>;
                 case "input":
-                  return (
-                    <td key={colIndex}>
-                      <input type="text" value={cellValue} readOnly />
-                    </td>
-                  );
-                case "dropdown":
-                  return (
-                    <td key={colIndex}>
-                      <select value={cellValue} disabled>
-                        {headerItem.options.map((option, optIndex) => (
-                          <option key={optIndex} value={option}>
-                            {option}
-                          </option>
-                        ))}
-                      </select>
-                    </td>
-                  );
                 case "dateTime":
-                  return <td key={colIndex}>{cellValue}</td>;
+                  cellValue = row[headerItem.label];
+                  break;
+                case "dropdown":
+                  cellValue = row[headerItem.label];
+                  break;
                 case "textblock":
-                  return <td key={colIndex}><textarea value={cellValue} readOnly /></td>;
+                  cellValue = row[headerItem.label];
+                  break;
                 default:
-                  return null;
+                  cellValue = "";
               }
+
+              // Render cell based on headerItem type
+              return (
+                <td key={colIndex}>
+                  {headerItem.type === "dropdown" ? (
+                    <select value={cellValue}>
+                      {headerItem.options.map((option, optIndex) => (
+                        <option key={optIndex} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  ) : headerItem.type === "textblock" ? (
+                    <textarea value={cellValue} />
+                  ) : (
+                    cellValue
+                  )}
+                </td>
+              );
             })}
           </tr>
         ))}

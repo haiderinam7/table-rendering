@@ -10,8 +10,26 @@ export const tableData = {
       { label: "Note", type: "text" }
     ],
     rows: [
-      { firstName: "John", lastName: "Doe", bloodTypes: "A", medicareNumber: "123456789", dob: "01/01/1995", admissionReason: "Routine Check", admissionTime: "03/07/2024 10:15", note: "N/A" },
-      { firstName: "Jane", lastName: "Smith", bloodTypes: "B", medicareNumber: "987654321", dob: "05/12/1989", admissionReason: "Emergency", admissionTime: "03/07/2024 11:30", note: "Requires follow-up" }
+        { 
+            "First Name": "John", 
+            "Last Name": "Doe", 
+            "Blood Types": "A", 
+            "Medicare Number": "123456789", 
+            "DOB": "01/01/1995", 
+            "Admission reason": "Routine Check", 
+            "Admission time": "03/07/2024 10:15", 
+            "Note": "N/A" 
+          },
+          { 
+            "First Name": "Jane", 
+            "Last Name": "Smith", 
+            "Blood Types": "B", 
+            "Medicare Number": "987654321", 
+            "DOB": "05/12/1989", 
+            "Admission reason": "Emergency", 
+            "Admission time": "03/07/2024 11:30", 
+            "Note": "Requires follow-up" 
+          }
     ]
   };
   
